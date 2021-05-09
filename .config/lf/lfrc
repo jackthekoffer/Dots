@@ -1,0 +1,65 @@
+set ifs "\n"
+
+cmd convToWebm ${{
+for V in $fx; do
+    ffmpeg -i "$V" -c:v libvpx-vp9 -crf 30 -b:v 0 -b:a 128k -c:a libopus "${V%.*}.webm";
+done
+}}
+
+cmd convToOpus ${{
+for V in $fx; do
+    ffmpeg -i "$V" -c:a libopus -b:a 192k "${V%.*}.ogg";
+done
+}}
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd zip %zip -r "$f" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+# Archive Mappings
+map az zip
+map at tar
+map ag targz
+map ab targz
+map au unarchive
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+map br $vimv
+
+map cw convToWebm
+map ca convToOpus
+# Remove some defaults
+map m
+map o
+map n
+map "'"
+map '"'
+map d
+map c
+map e
+map f

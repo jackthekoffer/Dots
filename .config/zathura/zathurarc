@@ -1,0 +1,39 @@
+# general
+set guioptions ""
+set selection-clipboard clipboard
+set recolor                     "true"
+set recolor-keephue             "true"
+# colors
+set default-bg                  "#0D0D0D"
+set default-fg                  "#e91e63"
+
+set statusbar-bg                "#0D0D0D"
+set statusbar-fg                "#e3dcd6"
+
+set inputbar-bg                 "#0D0D0D"
+set inputbar-fg                 "#e3dcd6"
+
+set notification-bg             "#0D0D0D"
+set notification-fg             "#e3dcd6"
+
+set notification-error-bg       "#0D0D0D"
+set notification-error-fg       "#68C5C8"
+
+set notification-warning-bg     "#0D0D0D"
+set notification-warning-fg     "#ff9800"
+
+set highlight-color             "#ffc107"
+set highlight-active-color      "#03a9f4"
+
+set completion-bg               "#37474f"
+set completion-fg               "#03a9f4"
+
+set completion-highlight-bg     "#03a9f4"
+set completion-highlight-fg     "#e3dcd6"
+
+set recolor-lightcolor          "#0D0D0D"
+set recolor-darkcolor           "#E9E7E6"
+# 	Keybinds
+map i recolor
+
+
